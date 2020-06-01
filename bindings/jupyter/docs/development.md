@@ -1,14 +1,35 @@
 # Development
 
 #### Javascript
+Before doing anything, make sure `node` and `yarn` is installed.
 
-Build the JS code
+If `yarn` is not installed, install it via 
+
+```
+npm install -g yarn
+```
+
+Running a `yarn` command in the project root is necessary to setup the dev environment (also pulling the necessary dependencies). To do so, navigate to the root of repository and run
+
+```
+yarn
+```
+
+After the `yarn` command completes, navigate back to the `bindings/jupyter` folder and build the JS code
 
 ```
 cd js
 yarn
 yarn build
 ```
+
+For development, it is recommanded to run 
+
+```
+yarn watch
+```
+
+instead of `yarn build` because it will watch for changes of the JS code.
 
 #### Python
 
@@ -31,14 +52,7 @@ jupyter nbextension enable --py widgetsnbextension
 To run the code directly under this directory, the Jupyter nbextension needs to be installed in this local environment:
 
 ```
-python setup.py install
-```
-
-If running `python setup.py install` for the first time, the following two commands need to be executed (these should only need to be executed once).
-
-```
-jupyter nbextension install --py --symlink --sys-prefix mlvis
-jupyter nbextension enable --py --sys-prefix mlvis
+python setup.py develop
 ```
 
 #### Run
@@ -48,6 +62,8 @@ Start the Jupyter Notebook directly under this directory:
 ```
 jupyter notebook
 ```
+
+Then, create a notebook and test out the library.
 
 #### Build
 
